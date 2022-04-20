@@ -124,7 +124,7 @@
 
     function groupBy(array, property) {
        
-
+        const result = {};
         return array.reduce(function(acc, element) {
             const propertyGroupBy = [element[property]];
 
@@ -134,12 +134,8 @@
 
             acc[propertyGroupBy].push(element);
 
-            acc[property] = [];
-            acc[property].push(element);
-
             return acc;
-            
-        },{});
+        },result);
     }
 
     console.log(groupBy(notification,'date'));
