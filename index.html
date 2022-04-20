@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function map(array, callback) {
+
+            const result = [];
+
+            for (let i = 0; i < array.length; i++) {
+                const element = callback(array[i], i, array);
+
+                result.push(element);
+
+            }
+            return result;
+
+        }
+
+        const arr =  [
+            {
+                name: 'pavel',
+                surname: 'petrov',
+                county: 'england'
+            },
+
+            {
+                name: 'oleg',
+                surname: 'orexov',
+                county: 'ukraine'
+            }
+
+        ];
+
+        const res = map(arr, function(x) {
+            return x.name + ' ' + x.surname;
+         
+
+        });
+
+        const county = map(arr, function(x) {
+            return x.name + ' ' + x.surname + " " + "lives in" + " " + x.county; 
+
+        });
+
+        console.log(res);
+        console.log(county);
+
+
+
+        function filter(array, callback){
+            const result = [];
+
+            for (let i =0; i <array.length; i++){
+                const element = callback(array[i], i, array);
+
+                result.push(element);
+                return result;
+            }
+        }
+
+        const cities = [
+        {name: 'London', population: 9506468},
+        {name: 'Kyiv', population: 2999935},
+        {name: 'Rim', population: 2873833},
+        {name: 'Amsterdam', population: 821752 },
+        {name: 'Lviv', population: 721301}
+    ];
+
+    const millionPlusCities = cities.filter(function (x) {
+        return x.population > 1000000;
+    });
+
+    console.log(millionPlusCities);
+
+
+
+
+
+    const notification = [
+
+    {
+        date: '20/04/2022',
+        msg: 'Hello,lera'
+        },
+
+        {
+        date: '20/04/2022',
+        msg: 'Hello,vika'
+        },
+
+        {
+        date: '20/04/2022',
+        msg: 'Hello,anton'
+        },
+
+        {
+        date: '14/04/2022',
+        msg: 'Hello,katya'
+        },
+
+        {
+        date: '14/04/2022',
+        msg: 'Hello,liza'
+        },
+
+        {
+        date: '13/04/2022',
+        msg: 'hello,instagram'
+        },
+
+        {
+        date: '12/04/2022',
+        msg: 'Hello,telegram'
+        }
+
+      
+    ];
+
+    function groupBy(array, property) {
+       
+
+        return array.reduce(function(acc, element) {
+            const propertyGroupBy = [element[property]];
+
+            if (!acc[propertyGroupBy]) {
+                acc[propertyGroupBy] = [];
+            }
+
+            acc[propertyGroupBy].push(element);
+
+            acc[property] = [];
+            acc[property].push(element);
+
+            return acc;
+            
+        },{});
+    }
+
+    console.log(groupBy(notification,'date'));
+
+
+    </script>>
+</body>
+</html>
